@@ -4,7 +4,7 @@
   grid-template-columns: 72px minmax(0, 1fr);
   min-height: 100dvh;
   overflow: hidden;
-  padding-right: 2rem;
+  padding-right: 72px;
   background: linear-gradient(135deg, #faf8f2 0%, var(--color-bg) 100%);
 
   &__gutter {
@@ -13,7 +13,7 @@
     align-items: flex-end;
     justify-content: center;
     gap: 0.25rem;
-    padding: 1rem 1rem 0;
+    padding: 1rem 1rem 1rem;
     border-right: 1px solid rgba(23, 23, 23, 0.08);
     font-family: "IBM Plex Mono", monospace;
     font-size: 11px;
@@ -33,7 +33,6 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-left: clamp(1rem, 3vw, 2.25rem);
     padding-bottom: 10rem;
   }
 
@@ -86,7 +85,10 @@
     color: var(--color-text);
     border: 1.5px solid rgba(23, 23, 23, 0.18);
     text-decoration: none;
-    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    transition:
+      color 0.2s,
+      border-color 0.2s,
+      background 0.2s;
 
     svg {
       width: 18px;
@@ -103,11 +105,9 @@
 
   @media (max-width: 760px) {
     grid-template-columns: 48px minmax(0, 1fr);
-    padding: 1.2rem 1rem 1.2rem 0.75rem;
+    padding-right: 48px;
 
     &__content {
-      padding-left: 0.75rem;
-      padding-right: 1rem;
       padding-bottom: 12rem;
     }
   }
