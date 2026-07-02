@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const LINE_SPACING = 18; // px per line number
+const LINE_SPACING = 18;
 
 const calculate = (): number[] => {
   const count = Math.floor(window.innerHeight / LINE_SPACING);

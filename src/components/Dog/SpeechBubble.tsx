@@ -1,13 +1,14 @@
 import { useTypewriter } from "@/hooks";
 import { TYPEWRITER_SENTENCES } from "@/constants";
+import styles from "./Dog.module.scss";
 
 const SpeechBubble = () => {
   const text = useTypewriter(TYPEWRITER_SENTENCES, { initialDelay: 5000 });
 
   return (
-    <div className="dog__bubble">
+    <div className={styles.bubble}>
       {text}
-      <span className="dog__bubble-cursor" />
+      <span className={styles.bubbleCursor} />
     </div>
   );
 };

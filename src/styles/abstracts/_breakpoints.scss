@@ -1,0 +1,41 @@
+@use "./variables" as *;
+
+@mixin respond-to($bp) {
+  @if $bp == sm {
+    @media (min-width: $bp-sm) {
+      @content;
+    }
+  } @else if $bp == md {
+    @media (min-width: $bp-md) {
+      @content;
+    }
+  } @else if $bp == lg {
+    @media (min-width: $bp-lg) {
+      @content;
+    }
+  } @else if $bp == xl {
+    @media (min-width: $bp-xl) {
+      @content;
+    }
+  } @else {
+    @warn 'respond-to(): unknown breakpoint `#{$bp}`.';
+  }
+}
+
+@mixin respond-below($bp) {
+  @if $bp == sm {
+    @media (max-width: calc($bp-sm - 1px)) {
+      @content;
+    }
+  } @else if $bp == md {
+    @media (max-width: calc($bp-md - 1px)) {
+      @content;
+    }
+  } @else if $bp == lg {
+    @media (max-width: calc($bp-lg - 1px)) {
+      @content;
+    }
+  } @else {
+    @warn 'respond-below(): unknown breakpoint `#{$bp}`.';
+  }
+}

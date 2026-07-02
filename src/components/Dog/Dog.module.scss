@@ -1,0 +1,450 @@
+@use "abstracts/breakpoints" as *;
+@use "abstracts/variables" as *;
+
+@keyframes dogWalk {
+  0% {
+    transform: translateX(-230px) scale(var(--_scale));
+  }
+  100% {
+    transform: translateX(calc(100vw + var(--_overshoot))) scale(var(--_scale));
+  }
+}
+
+@keyframes dogBodyJump {
+  from {
+    transform: translateY(-4px);
+  }
+  to {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes dogHeadTilt {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes dogEar {
+  from {
+    transform: rotate(-15deg);
+  }
+  to {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes dogEarBack {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes dogLegs {
+  from {
+    transform: rotate(-35deg);
+  }
+  to {
+    transform: rotate(35deg);
+  }
+}
+
+@keyframes dogTailTilt {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-30deg);
+  }
+}
+
+@keyframes dogShadowGrow {
+  from {
+    width: 92px;
+  }
+  to {
+    width: 132px;
+  }
+}
+
+@keyframes cursorBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes bubbleShow {
+  0%,
+  12% {
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  90%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bfBob {
+  from {
+    transform: translateY(-7px);
+  }
+  to {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes wingFlap {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0.12);
+  }
+}
+
+.dog {
+  --dog-orange: #c6936f;
+  --dog-dark-orange: #a87c5e;
+  --_scale: 0.5;
+  --_overshoot: 80px;
+
+  @include respond-to(md) {
+    --_scale: 0.72;
+    --_overshoot: 100px;
+  }
+
+  position: fixed;
+  left: $gutter-mobile;
+  bottom: 0;
+  width: 230px;
+  height: 230px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  z-index: var(--z-dog);
+  overflow: visible;
+  image-rendering: pixelated;
+  filter: drop-shadow(var(--shadow-dog));
+  transform: translateX(-230px) scale(var(--_scale));
+  transform-origin: left bottom;
+  animation: dogWalk 38s linear infinite;
+
+  @include respond-to(md) {
+    left: $gutter-desktop;
+  }
+}
+
+.wrap {
+  display: flex;
+  width: 100%;
+  height: 238px;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+}
+
+.body {
+  width: 119px;
+  height: 53px;
+  margin-top: 132px;
+  position: relative;
+  z-index: 0;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  will-change: transform;
+  animation: dogBodyJump 0.13s steps(2) infinite alternate;
+
+  &::after {
+    content: "";
+    width: 119px;
+    height: 53px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    background-color: var(--dog-orange);
+  }
+}
+
+.head {
+  width: 42px;
+  height: 75px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background-color: var(--dog-orange);
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: 1;
+  transform-origin: 0 100%;
+  animation: dogHeadTilt 0.2s steps(3) infinite alternate;
+
+  &::after {
+    content: "";
+    width: 42px;
+    height: 75px;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--dog-orange);
+  }
+}
+
+.ear {
+  width: 13px;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  position: absolute;
+  left: 3px;
+  top: -9px;
+  background-color: var(--dog-orange);
+  transform-origin: 50% 100%;
+  will-change: transform;
+  animation: dogEar 0.2s steps(2) infinite alternate;
+}
+
+.earBack {
+  left: 13px;
+  top: -11px;
+  z-index: -1;
+  background-color: var(--dog-dark-orange);
+  animation: dogEarBack 0.2s steps(2) infinite alternate-reverse;
+}
+
+.snout {
+  width: 66px;
+  height: 42px;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  background-color: var(--dog-orange);
+  position: absolute;
+  top: 15px;
+  left: 13px;
+}
+
+.nose {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  border-radius: var(--radius-md);
+  background-color: #6b4a40;
+}
+
+.eye {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-md);
+  position: absolute;
+  top: -8px;
+  left: 6px;
+  z-index: 1;
+  background:
+    radial-gradient(circle at center, #6b4a40 10%, transparent 11%) 17px 0 / 100% 100% no-repeat,
+    radial-gradient(circle at center, var(--dog-orange) 7px, transparent 7px) 0 0 / 100% 100%
+      no-repeat,
+    linear-gradient(to bottom, var(--dog-orange) 70%, transparent 70%) 0 0 / 100% 100% no-repeat,
+    #6b4a40;
+}
+
+.mouth {
+}
+
+.collar {
+  height: 12px;
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  bottom: 0;
+  z-index: 1;
+  border-radius: var(--radius-sm);
+  background-color: #b13a2f;
+}
+
+.tag {
+  width: 11px;
+  height: 11px;
+  border-radius: var(--radius-md);
+  position: absolute;
+  right: -8px;
+  bottom: -7px;
+  background-color: #6b4a40;
+}
+
+.legs {
+  position: absolute;
+  top: 70%;
+  z-index: -1;
+}
+
+.legsFront {
+  right: 26px;
+}
+
+.legsBack {
+  left: 18px;
+}
+
+.leg {
+  width: 13px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  position: absolute;
+  top: 0;
+}
+
+.legPrimary {
+  background-color: var(--dog-orange);
+  transform-origin: 50% 0;
+  will-change: transform;
+  animation: dogLegs 0.4s steps(4) infinite alternate;
+}
+
+.legSecondary {
+  right: -13px;
+  z-index: -1;
+  background-color: var(--dog-dark-orange);
+  transform-origin: 50% 0;
+  will-change: transform;
+  animation: dogLegs 0.4s steps(4) infinite alternate-reverse;
+}
+
+.tail {
+  width: 11px;
+  height: 33px;
+  border-radius: var(--radius-md);
+  position: absolute;
+  bottom: 70%;
+  left: 1%;
+  background-color: var(--dog-orange);
+  transform-origin: 50% 100%;
+  animation: dogTailTilt 0.2s steps(2) infinite alternate;
+}
+
+.shadow {
+  position: absolute;
+  bottom: 21px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 6px;
+  border-radius: 3px;
+  background-color: #cfbab2;
+  animation: dogShadowGrow 0.2s steps(2) infinite alternate;
+}
+
+.bubble {
+  position: absolute;
+  top: -45px;
+  left: 14px;
+  width: 180px;
+  height: 75px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface-bubble);
+  border: 3px solid var(--color-text-on-bubble);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-mono-ui);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-on-bubble);
+  z-index: var(--z-dog-bubble);
+  image-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  opacity: 0;
+  animation: bubbleShow 38s linear infinite;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -14px;
+    right: 24px;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 14px solid var(--color-text-on-bubble);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    right: 27px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 10px solid var(--color-surface-bubble);
+    z-index: 1;
+  }
+}
+
+.bubbleCursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.85em;
+  background: var(--color-text-on-bubble);
+  vertical-align: text-bottom;
+  margin-left: 1px;
+  animation: cursorBlink 0.7s step-end infinite;
+}
+
+.butterfly {
+  position: absolute;
+  right: -25px;
+  top: 48px;
+  width: 34px;
+  height: 26px;
+  z-index: var(--z-butterfly);
+  animation: bfBob 0.55s steps(3) infinite alternate;
+}
+
+.butterflyBody {
+  position: absolute;
+  left: 15px;
+  top: 1px;
+  width: 4px;
+  height: 20px;
+  background: #1c1917;
+  border-radius: 1px;
+  z-index: 2;
+}
+
+.butterflyWing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 16px;
+  background: #f5c09a;
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-sm) var(--radius-sm);
+  transform-origin: right center;
+  animation: wingFlap 0.22s steps(2) infinite alternate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    right: 2px;
+    width: 5px;
+    height: 5px;
+    background: #fde7cc;
+    border-radius: 1px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background: #e8a87c;
+    border-radius: var(--radius-sm);
+  }
+}

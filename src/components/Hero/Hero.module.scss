@@ -1,0 +1,114 @@
+@use "abstracts/breakpoints" as *;
+@use "abstracts/mixins" as *;
+@use "abstracts/variables" as *;
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: $gutter-mobile minmax(0, 1fr);
+  min-height: 100dvh;
+  overflow: hidden;
+  padding-inline-end: $gutter-mobile;
+  background: linear-gradient(135deg, var(--color-surface-raised) 0%, var(--color-surface) 100%);
+
+  @include respond-to(md) {
+    grid-template-columns: $gutter-desktop minmax(0, 1fr);
+    padding-inline-end: $gutter-desktop;
+  }
+}
+
+.gutter {
+  @include flex-column;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: var(--space-4);
+  border-right: 1px solid var(--color-border-faint);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  line-height: var(--lh-snug);
+  color: var(--color-border-muted);
+  user-select: none;
+  background: linear-gradient(135deg, var(--color-surface-raised) 0%, var(--color-surface) 100%);
+  z-index: var(--z-gutter);
+  width: fit-content;
+}
+
+.content {
+  position: relative;
+  z-index: var(--z-content);
+  @include flex-column-center;
+  text-align: center;
+  padding-block-end: 12rem;
+  margin-inline-start: var(--space-8);
+
+  @include respond-to(md) {
+    padding-block-end: 10rem;
+  }
+}
+
+.title {
+  margin-block-end: 1.1rem;
+  font-family: var(--font-serif);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-tight);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0;
+  @include flex-column;
+  align-items: center;
+}
+
+.role {
+  color: var(--color-accent);
+}
+
+.bio {
+  margin-block-end: 0.7rem;
+  max-width: var(--content-max-width);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-base);
+}
+
+.meta {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-base);
+  color: var(--color-text-muted);
+}
+
+.links {
+  display: flex;
+  gap: var(--space-3);
+  margin-block-start: 1.75rem;
+  justify-content: center;
+}
+
+.link {
+  @include flex-center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+  border: 1.5px solid var(--color-border-subtle);
+  text-decoration: none;
+  transition:
+    color var(--duration-base) var(--ease-default),
+    border-color var(--duration-base) var(--ease-default),
+    background-color var(--duration-base) var(--ease-default);
+
+  svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+
+  &:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background-color: var(--color-accent-subtle);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
