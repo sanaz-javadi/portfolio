@@ -1,0 +1,35 @@
+@use "abstracts/mixins" as *;
+
+.toggle {
+  @include flex-center;
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-border-subtle);
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  cursor: pointer;
+  z-index: 100;
+  transition:
+    color var(--duration-base) var(--ease-default),
+    border-color var(--duration-base) var(--ease-default),
+    background-color var(--duration-base) var(--ease-default);
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background-color: var(--color-accent-subtle);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}

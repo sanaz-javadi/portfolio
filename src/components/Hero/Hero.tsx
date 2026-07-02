@@ -1,5 +1,6 @@
 import styles from "./Hero.module.scss";
 import Dog from "@/components/Dog";
+import ThemeToggle from "@/components/ThemeToggle";
 import { SOCIAL_LINKS } from "@/constants";
 import { useGutterLines } from "@/hooks";
 
@@ -42,6 +43,7 @@ const Hero = () => {
       </section>
 
       <Dog />
+      <ThemeToggle />
     </main>
   );
 };
