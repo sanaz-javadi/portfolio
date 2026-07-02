@@ -138,6 +138,7 @@
   transform: translateX(-230px) scale(var(--_scale));
   transform-origin: left bottom;
   animation: dogWalk 38s linear infinite;
+  animation-delay: -10s;
 
   @include respond-to(md) {
     left: $gutter-desktop;
@@ -361,6 +362,7 @@
   -webkit-font-smoothing: antialiased;
   opacity: 0;
   animation: bubbleShow 38s linear infinite;
+  animation-delay: -10s;
 
   &::before {
     content: "";

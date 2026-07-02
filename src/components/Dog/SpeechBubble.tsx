@@ -3,7 +3,7 @@ import { TYPEWRITER_SENTENCES } from "@/constants";
 import styles from "./Dog.module.scss";
 
 const SpeechBubble = () => {
-  const text = useTypewriter(TYPEWRITER_SENTENCES, { initialDelay: 5000 });
+  const text = useTypewriter(TYPEWRITER_SENTENCES, { initialDelay: 1000 });
 
   return (
     <div className={styles.bubble}>
