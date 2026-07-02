@@ -14,7 +14,7 @@
   --color-border-subtle: rgba(23, 23, 23, 0.18);
   --color-border-muted: rgba(23, 23, 23, 0.35);
 
-  --font-serif: "Libre Baskerville", Georgia, serif;
+  --font-serif: "Poppins", "Inter", sans-serif;
   --font-sans: "Satoshi", "Inter", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
   --font-mono-ui: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
@@ -23,7 +23,7 @@
   --fs-xs: 12px;
   --fs-sm: clamp(13px, 1.2vw, 16px);
   --fs-base: clamp(16px, 1.8vw, 20px);
-  --fs-lg: clamp(28px, 3.5vw, 40px);
+  --fs-lg: clamp(28px, 3.5vw, 42px);
 
   --lh-tight: 1.2;
   --lh-snug: 1.35;

@@ -37,6 +37,12 @@ const Dog = () => {
 
       <SpeechBubble />
 
+      <div className={styles.hearts} aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
+
       <div className={styles.butterfly}>
         <div className={styles.butterflyWing} />
         <div className={styles.butterflyBody} />

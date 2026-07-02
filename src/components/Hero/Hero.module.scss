@@ -51,7 +51,7 @@
   font-family: var(--font-serif);
   font-size: var(--fs-lg);
   line-height: var(--lh-tight);
-  font-weight: var(--fw-medium);
+  font-weight: 300;
   letter-spacing: 0;
   @include flex-column;
   align-items: center;
