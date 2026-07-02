@@ -17,8 +17,9 @@ const Hero = () => {
           <span className="hero__role">Frontend Engineer</span>
         </h1>
         <p className="hero__bio">
-          I craft web experiences that feel effortless to use and hold up at
-          scale, clean code, sharp details, and a deep care for the craft.
+          I turn ideas into fast, thoughtful, and delightful web experiences. I
+          care about clean code, meaningful details, and building products
+          people genuinely enjoy using.
         </p>
         <p className="hero__meta">5+ years · React · Next.js · TypeScript</p>
 

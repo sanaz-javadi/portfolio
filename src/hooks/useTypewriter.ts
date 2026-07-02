@@ -4,6 +4,7 @@ interface TypewriterOptions {
   typingSpeed?: number
   deletingSpeed?: number
   pauseMs?: number
+  initialDelay?: number
 }
 
 interface TypewriterState {
@@ -14,7 +15,7 @@ interface TypewriterState {
 
 export function useTypewriter(
   sentences: string[],
-  { typingSpeed = 75, deletingSpeed = 40, pauseMs = 1800 }: TypewriterOptions = {},
+  { typingSpeed = 75, deletingSpeed = 40, pauseMs = 1800, initialDelay = 0 }: TypewriterOptions = {},
 ): string {
   const [text, setText] = useState('')
   const stateRef = useRef<TypewriterState>({ sentenceIndex: 0, charIndex: 0, deleting: false })
@@ -50,7 +51,7 @@ export function useTypewriter(
       }
     }
 
-    timeout = setTimeout(tick, typingSpeed)
+    timeout = setTimeout(tick, initialDelay || typingSpeed)
     return () => clearTimeout(timeout)
   }, []) // intentionally run once on mount
 

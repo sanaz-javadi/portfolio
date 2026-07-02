@@ -1,57 +1,115 @@
 // ── keyframes ─────────────────────────────────────────────────────────────────
 
 @keyframes dogWalk {
-  0%   { transform: translateX(-230px) scale(0.72); }
-  100% { transform: translateX(calc(100vw + 100px)) scale(0.72); }
+  0% {
+    transform: translateX(-230px) scale(0.72);
+  }
+  100% {
+    transform: translateX(calc(100vw + 100px)) scale(0.72);
+  }
 }
 
 @keyframes dogBodyJump {
-  from { transform: translateY(-4px); }
-  to   { transform: translateY(4px); }
+  from {
+    transform: translateY(-4px);
+  }
+  to {
+    transform: translateY(4px);
+  }
 }
 
 @keyframes dogHeadTilt {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(5deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(5deg);
+  }
 }
 
 @keyframes dogEar {
-  from { transform: rotate(-15deg); }
-  to   { transform: rotate(-5deg); }
+  from {
+    transform: rotate(-15deg);
+  }
+  to {
+    transform: rotate(-5deg);
+  }
 }
 
 @keyframes dogEarBack {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(15deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(15deg);
+  }
 }
 
 @keyframes dogLegs {
-  from { transform: rotate(-35deg); }
-  to   { transform: rotate(35deg); }
+  from {
+    transform: rotate(-35deg);
+  }
+  to {
+    transform: rotate(35deg);
+  }
 }
 
 @keyframes dogTailTilt {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(-30deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-30deg);
+  }
 }
 
 @keyframes dogShadowGrow {
-  from { width: 92px; }
-  to   { width: 132px; }
+  from {
+    width: 92px;
+  }
+  to {
+    width: 132px;
+  }
 }
 
 @keyframes cursorBlink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
+}
+
+// synced to dogWalk (38s): hidden while off-screen, visible mid-walk, hidden again before exit
+@keyframes bubbleShow {
+  0%,
+  12% {
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  90%,
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes bfBob {
-  from { transform: translateY(-7px); }
-  to   { transform: translateY(5px); }
+  from {
+    transform: translateY(-7px);
+  }
+  to {
+    transform: translateY(5px);
+  }
 }
 
 @keyframes wingFlap {
-  from { transform: scaleX(1); }
-  to   { transform: scaleX(0.12); }
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0.12);
+  }
 }
 
 // ── dog block ─────────────────────────────────────────────────────────────────
@@ -187,9 +245,12 @@
     left: 6px;
     z-index: 1;
     background:
-      radial-gradient(circle at center, #6b4a40 10%, transparent 11%) 17px 0 / 100% 100% no-repeat,
-      radial-gradient(circle at center, var(--dog-orange) 7px, transparent 7px) 0 0 / 100% 100% no-repeat,
-      linear-gradient(to bottom, var(--dog-orange) 70%, transparent 70%) 0 0 / 100% 100% no-repeat,
+      radial-gradient(circle at center, #6b4a40 10%, transparent 11%) 17px 0 /
+        100% 100% no-repeat,
+      radial-gradient(circle at center, var(--dog-orange) 7px, transparent 7px)
+        0 0 / 100% 100% no-repeat,
+      linear-gradient(to bottom, var(--dog-orange) 70%, transparent 70%) 0 0 /
+        100% 100% no-repeat,
       #6b4a40;
   }
 
@@ -225,8 +286,12 @@
     top: 70%;
     z-index: -1;
 
-    &--front { right: 26px; }
-    &--back  { left: 18px; }
+    &--front {
+      right: 26px;
+    }
+    &--back {
+      left: 18px;
+    }
   }
 
   &__leg {
@@ -282,10 +347,10 @@
   // ── speech bubble ──
   &__bubble {
     position: absolute;
-    top: -30px;
+    top: -45px;
     left: 14px;
     width: 180px;
-    height: 58px;
+    height: 75px;
     padding: 10px 13px;
     background: #fffef0;
     border: 3px solid #3a2e2a;
@@ -297,6 +362,8 @@
     z-index: 25;
     image-rendering: auto;
     -webkit-font-smoothing: antialiased;
+    opacity: 0;
+    animation: bubbleShow 38s linear infinite;
 
     &::before {
       content: "";
@@ -393,8 +460,12 @@
 
     @at-root {
       @keyframes dogWalk {
-        0%   { transform: translateX(-230px) scale(0.5); }
-        100% { transform: translateX(calc(100vw + 80px)) scale(0.5); }
+        0% {
+          transform: translateX(-230px) scale(0.5);
+        }
+        100% {
+          transform: translateX(calc(100vw + 80px)) scale(0.5);
+        }
       }
     }
   }
