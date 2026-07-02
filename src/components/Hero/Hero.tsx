@@ -1,6 +1,6 @@
 import "./Hero.scss";
-import Dog from "../Dog";
-import { SOCIAL_LINKS, GUTTER_LINES } from "../../constants";
+import Dog from "@/components/Dog";
+import { SOCIAL_LINKS, GUTTER_LINES } from "@/constants";
 
 const Hero = () => {
   return (
@@ -17,9 +17,8 @@ const Hero = () => {
           <span className="hero__role">Frontend Engineer</span>
         </h1>
         <p className="hero__bio">
-          I turn ideas into fast, thoughtful, and delightful web experiences. I
-          care about clean code, meaningful details, and building products
-          people genuinely enjoy using.
+          I turn ideas into fast, thoughtful, and delightful web experiences. I care about clean
+          code, meaningful details, and building products people genuinely enjoy using.
         </p>
         <p className="hero__meta">5+ years · React · Next.js · TypeScript</p>
 
@@ -30,9 +29,7 @@ const Hero = () => {
               href={href}
               className="hero__link"
               target={href.startsWith("mailto") ? undefined : "_blank"}
-              rel={
-                href.startsWith("mailto") ? undefined : "noopener noreferrer"
-              }
+              rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
               aria-label={label}
             >
               {icon}
