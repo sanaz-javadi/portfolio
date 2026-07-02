@@ -8,6 +8,12 @@
   --font-title: 40px;
   --font-body: 20px;
   --font-meta: 16px;
+
+  @media (max-width: 760px) {
+    --font-title: 28px;
+    --font-body: 16px;
+    --font-meta: 13px;
+  }
 }
 
 *,
