@@ -1,12 +1,15 @@
 import "./Hero.scss";
 import Dog from "@/components/Dog";
-import { SOCIAL_LINKS, GUTTER_LINES } from "@/constants";
+import { SOCIAL_LINKS } from "@/constants";
+import { useGutterLines } from "@/hooks";
 
 const Hero = () => {
+  const gutterLines = useGutterLines();
+
   return (
     <main className="hero">
       <div className="hero__gutter" aria-hidden="true">
-        {GUTTER_LINES.map((n) => (
+        {gutterLines.map((n) => (
           <span key={n}>{n}</span>
         ))}
       </div>
